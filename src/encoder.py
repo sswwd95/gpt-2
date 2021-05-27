@@ -27,6 +27,7 @@ def bytes_to_unicode():
     cs = [chr(n) for n in cs]
     return dict(zip(bs, cs))
 
+
 def get_pairs(word):
     """Return set of symbol pairs in a word.
 
