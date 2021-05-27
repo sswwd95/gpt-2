@@ -8,8 +8,9 @@ def default_hparams():
         n_ctx=1024,
         n_embd=768,
         n_head=12,
-        n_layer=12,
+        n_layer=42,
     )
+    
 
 def shape_list(x):
     """Deal with dynamic shape in tensorflow cleanly."""
@@ -27,6 +28,7 @@ def gelu(x):
 
 def norm(x, scope, *, axis=-1, epsilon=1e-5):
     """Normalize to mean = 0, std = 1, then do a diagonal affine transform."""
+    # 평균이 0, 표준편차가 1인 표준화
     with tf.variable_scope(scope):
         n_state = x.shape[-1].value
         g = tf.get_variable('g', [n_state], initializer=tf.constant_initializer(1))
